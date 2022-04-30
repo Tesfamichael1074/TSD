@@ -1,0 +1,147 @@
+@model tsdtask.Models.HomePageFilter
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex flex-row-reverse justify-content-between">
+
+    <a asp-action="Create" class="btn btn-dark btn-sm ">Create New Recipy </a>
+    <form asp-action="Index" style="width: 40%;" class="d-flex flex-row">
+          <input asp-for="Search" class="form-control mr-sm-2 mx-4" type="text" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="d-flex flex-row mt-3">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Difficulty
+                </th>
+                <th scope="col">
+                    Ingredients
+                </th>
+                <th scope="col">
+                    Process
+                </th>
+                <th scope="col">
+                    Likes
+                </th>
+                <th scope="col">
+                    Tips
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Recipies!) {
+            <form asp-action="Index">
+                <tr id="row">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ingredients)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Process)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfLikes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipsAndTricks)
+                    </td>
+                    <td>
+                        @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | *@
+                        <input style="display: none;" asp-for="DetailsToView" type="text" value="@item.Id"  />
+                        <input style="display: none;" asp-for="Search" type="text" value="@Model.Search"  />
+                        <input type="submit" value="   Details   " > 
+                        @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                    </td>
+                </tr>
+            </form>
+        }
+    </tbody>
+</table>
+
+
+<div style="width: 60%; " class="card bg-blue mx-5 px-5">
+
+<div class="card-body"></div>
+ <h5 class="card-title">Recipy Details</h5>
+
+@if (Model.Details != null)
+{
+<div>
+    
+    <dl class="row">
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.NumOfLikes)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.NumOfLikes)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.Time)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.Time)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.Name)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.Name)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.Difficulty)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.Difficulty)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.Ingredients)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.Ingredients)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.Process)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.Process)
+        </dd>
+        <dt class = "col-sm-5">
+            @Html.DisplayNameFor(model => Model.Details.TipsAndTricks)
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => Model.Details.TipsAndTricks)
+        </dd>
+    </dl>
+    
+    <a asp-action="Edit" class="card-link btn btn-warning mb-3" asp-route-id="@Model.Details.Id">Edit</a>
+    <a asp-action="Delete" class="card-link btn btn-danger mb-3" asp-route-id="@Model.Details.Id">Delete</a>
+</div>
+
+
+} else {
+    <p class="text-danger">You have not selected any recipy yet</p>
+}
+
+
+</div>
+
+
+</div>
+
+</div>
