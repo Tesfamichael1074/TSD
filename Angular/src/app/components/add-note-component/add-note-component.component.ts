@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesComponentComponent } from '../notes-component/notes-component.component'
-import { Note } from './../../models/Note'
-
+import { Router } from '@angular/router';
+import { NoteService } from '../../service/note.service'
 @Component({
   selector: 'app-add-note-component',
   templateUrl: './add-note-component.component.html',
@@ -9,15 +8,18 @@ import { Note } from './../../models/Note'
 })
 export class AddNoteComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   inputNote: string = "";
+  date: string = "";
 
   ngOnInit(): void {
   }
 
   addNote() {
-    
+    NoteService.addNote({text: this.inputNote, date: this.date})
+    this.router.navigate(['/list']);
+    alert('Note added successfully')
   }
 
 }

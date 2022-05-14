@@ -1,6 +1,6 @@
 .note-input {
 	display: block;
-	width: 100%;
+	width: 45%;
 	padding: 10px 15px;
 	appearance: none;
 	border: none;
@@ -10,20 +10,33 @@
 	outline: none;
 }
 
+.formclass {
+	display: flex;
+	flex-direction: column;
+	margin-left: 40vw;
+}
+
 .note-submit {
 	display: block;
-	width: 100%;
-	max-width: 200px;
+	width: 45%;
 	appearance: none;
 	border: none;
 	outline: none;
 	background: none;
 
-	background-color: #FE4880;
+	background-color: #280811;
 	color: #FFF;
-	margin: 15px auto;
-
+	margin-top: 20px;
 	padding: 10px 15px;
 	font-size: 18px;
 	font-weight: 700;
+	cursor: pointer;
+}
+
+.note-submit:hover {
+
+	background-color:  #FFF;
+	color: #280811;
+	outline: #280811 solid;
+	
 }
