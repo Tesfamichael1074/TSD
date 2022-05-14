@@ -1,0 +1,24 @@
+<div class="notes">
+
+
+<p style="margin-top: 5vw;margin-left: 10vw; margin-bottom: 10px;">Notes List</p>
+<div class="container">
+	<div class="table">
+		<div class="table-header">
+			<div class="header__item"><a id="name" class="filter__link" href="#">ID</a></div>
+			<div class="header__item"><a id="wins" class="filter__link filter__link--number" >Text</a></div>
+			<div class="header__item"><a id="draws" class="filter__link filter__link--number" >Date</a></div>
+			<div class="header__item"><a id="losses" class="filter__link filter__link--number" >Action</a></div>
+		</div>
+		<div class="table-content">	
+			<div *ngFor="let note of notes; let i = index;" class="table-row">		
+				<div class="table-data">{{i}}</div>
+				<div class="table-data">{{ note.text }}</div>
+				<div class="table-data">{{ note.date }}</div>
+				<div class="table-data"><button class="delete" (click)="deleteNote(i)">Remove</button></div>
+			</div>
+		</div>	
+	</div>
+</div>
+</div>  
+ 
