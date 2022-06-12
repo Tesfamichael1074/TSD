@@ -74,9 +74,7 @@ class App extends Component {
             <div className="game-board">
               <GameBoard squares={current.squares} onClick={(i)=>this.handleClick(i)}/>
             </div>
-            {/* <div className="game-info"> */}
               <div className='info'>{ status }</div>
-            {/* </div> */}
           </div>
 
       </div>
